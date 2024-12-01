@@ -16,7 +16,7 @@ TC74::~TC74(){
 int8_t TC74::read(){
     cmd[0] = READ_CMD;
     if(this->i2c_connection.write(this->i2c_addr,cmd,1) != 0){ // Magic Number 1 is the lenght of the write data, 1 byte
-        // TODO: Throw error no response error
+        return -100; 
     } else {
         this->i2c_connection.read(this->i2c_addr, this->cmd, 1);// Magic Number 1 is the lenght of return data, 1 byte
     }
